@@ -86,11 +86,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Image.asset('assets/images/amazon_in.png',
                       width: 120, height: 45, color: Colors.black),
                 ),
-                Container(
-                    padding: const EdgeInsets.only(left: 15, right: 15),
-                    child: Icon(FeatherIcons.user) //TODO: change icon
+                // Container(
+                //     padding: const EdgeInsets.only(left: 15, right: 15),
+                //     child: Icon(FeatherIcons.user) //TODO: change icon
 
-                    ),
+                //     ),
               ],
             ),
           ),
