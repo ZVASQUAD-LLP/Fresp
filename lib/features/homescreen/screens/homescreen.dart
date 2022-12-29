@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(60),
           child: AppBar(
             flexibleSpace: Container(
               decoration:
@@ -83,8 +83,8 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 Container(
                   alignment: Alignment.topLeft,
-                  child: Image.asset('assets/images/amazon_in.png',
-                      width: 120, height: 45, color: Colors.black),
+                  child: Image.asset('assets/images/logo_transperant.png',
+                      width: 150, height: 100, color: Colors.black),
                 ),
                 // Container(
                 //     padding: const EdgeInsets.only(left: 15, right: 15),
@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: productCategories?.length,
                       itemBuilder: (BuildContext context, int index) {
                         return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 8),
+                          padding: const EdgeInsets.symmetric(vertical: 10),
                           child: Container(
                               child: Column(
                             children: [
@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Container(
-                                    padding: const EdgeInsets.only(left: 15),
+                                    padding: const EdgeInsets.only(left: 20),
                                     child: Text(
                                       productCategories![index].name,
                                       style: const TextStyle(
@@ -166,13 +166,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   Container(
-                                    padding: const EdgeInsets.only(right: 15),
+                                    padding: const EdgeInsets.only(right: 20),
                                     child: Text(
                                       'See all',
                                       style: TextStyle(
-                                        fontSize: 18,
-                                        color:
-                                            GlobalVariables.selectedNavBarColor,
+                                        fontSize: 15,
+                                        color: GlobalVariables.secondaryColor,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),

@@ -51,15 +51,15 @@ class _AddressScreenState extends State<AddressScreen> {
         child: Form(
             key: _addressFormKey,
             child: Container(
-              margin: const EdgeInsets.all(10.0),
+              margin: const EdgeInsets.all(15.0),
               child: Column(
                 children: [
                   const Padding(
-                    padding: EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(20.0),
                     child: Text(
                       'Shipping Address Details:',
                       style: TextStyle(
-                        fontSize: 23,
+                        fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
@@ -98,18 +98,18 @@ class _AddressScreenState extends State<AddressScreen> {
                     child: Column(
                       children: [
                         Material(
-                            color: GlobalVariables.secondaryColor,
-                            borderRadius: BorderRadius.circular(10),
+                            color: GlobalVariables.selectedNavBarColor,
+                            borderRadius: BorderRadius.circular(8),
                             child: InkWell(
                                 onTap: addAddress,
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius: BorderRadius.circular(8),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 12, vertical: 10),
+                                      horizontal: 25, vertical: 17),
                                   child: TextWidget(
                                     text: 'Save Address',
                                     textSize: 15,
-                                    color: Colors.white,
+                                    color: Colors.black,
                                     isTitle: true,
                                   ),
                                 ))),

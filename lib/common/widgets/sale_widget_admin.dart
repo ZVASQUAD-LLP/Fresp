@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-
+import 'package:fresp/constants/utils.dart';
 import 'package:fresp/common/widgets/utils.dart';
 import 'package:fresp/features/cart/screen/cart_screen.dart';
 import 'package:fresp/features/product/services/product_service.dart';
@@ -27,6 +27,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
   final ProductService productService = ProductService();
   void addToCart() {
     productService.addToCart(context: context, product: widget.product);
+    showSnackBar(context, "Success!", "Added to cart", 1);
   }
 
   Product? product;
@@ -64,7 +65,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.circular(5),
                               child: Container(
                                 decoration: const BoxDecoration(
                                   boxShadow: [
@@ -84,7 +85,8 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 5.0),
+                              padding:
+                                  const EdgeInsets.only(left: 5.0, top: 5.0),
                               child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,

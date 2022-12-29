@@ -54,11 +54,11 @@ class AdminServices {
           response: postRes,
           context: context,
           onSuccess: () {
-            showSnackBar(context, 'Product posted!');
+            showSnackBar(context, 'Success!', 'Product Listed', 1);
             Navigator.pop(context);
           });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
   }
 
@@ -82,7 +82,7 @@ class AdminServices {
             }
           });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
 
     return categoryList;

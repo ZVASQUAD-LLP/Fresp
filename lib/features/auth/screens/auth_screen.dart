@@ -54,7 +54,7 @@ class _AuthScreenState extends State<AuthScreen> {
         //   title: const Center(child: Text('Fresp')),
         //   backgroundColor: GlobalVariables.selectedNavBarColor,
         // ),
-        backgroundColor: GlobalVariables.backgroundColor,
+        backgroundColor: GlobalVariables.selectedNavBarColor,
         body: SingleChildScrollView(
           child: SafeArea(
               child: Padding(
@@ -66,18 +66,18 @@ class _AuthScreenState extends State<AuthScreen> {
                   height: 180.0,
                   padding: const EdgeInsets.only(top: 50, bottom: 50),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(15),
                   ),
                   child: Center(
-                    child: Image.asset('assets/images/amazon_in.png',
-                        width: 120, height: 60, color: Colors.black),
+                    child: Image.asset('assets/images/logo_transperant.png',
+                        width: 350, height: 250),
                   ),
                 ),
                 ListTile(
                   tileColor: _auth == Auth.signin
                       ? GlobalVariables.greyBackgroundCOlor
-                      : GlobalVariables.backgroundColor,
-                  title: const Text('Sign in',
+                      : GlobalVariables.selectedNavBarColor,
+                  title: const Text('Login',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       )),
@@ -129,7 +129,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         CustomButton(
                             text: 'Sign in',
                             backgroundColour:
-                                GlobalVariables.selectedNavBarColor,
+                                GlobalVariables.secondaryColorYellow,
                             onTap: () => {
                                   if (_signinFormKey.currentState!.validate())
                                     signInUser()
@@ -140,7 +140,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ListTile(
                   tileColor: _auth == Auth.signup
                       ? GlobalVariables.greyBackgroundCOlor
-                      : GlobalVariables.backgroundColor,
+                      : GlobalVariables.selectedNavBarColor,
                   title: const Text('Create Account',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
@@ -191,7 +191,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         CustomButton(
                             text: 'Sign Up',
                             backgroundColour:
-                                GlobalVariables.selectedNavBarColor,
+                                GlobalVariables.secondaryColorYellow,
                             onTap: () => {
                                   if (_signupFormKey.currentState!.validate())
                                     signUpUser()

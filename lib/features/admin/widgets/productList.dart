@@ -42,6 +42,7 @@ class _ProductListState extends State<ProductList> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: const EdgeInsets.only(left: 10),
       height: 170,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,

@@ -95,7 +95,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
       try {
         _razorpay.open(options);
       } catch (e) {
-        showSnackBar(context, e.toString());
+        showSnackBar(context, "Error!", e.toString(), 0);
       }
     }
 

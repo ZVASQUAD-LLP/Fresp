@@ -36,8 +36,8 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     });
   }
 
-  double bottomBarBorderWidth = 5;
-  double bottomBarWidth = 42;
+  double bottomBarBorderWidth = 3.0;
+  double bottomBarWidth = 40.0;
   @override
   Widget build(BuildContext context) {
     final userCartLen = context.watch<UserDetailProvider>().user.cart.length;
@@ -52,7 +52,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         // unselectedItemColor: GlobalVariables.unselectedNavBarColor,
         currentIndex: _selectedindex,
         onTap: _selectedPage,
-        iconSize: 28,
+        iconSize: 20,
         items:
             // const <BottomNavigationBarItem>
             [
@@ -63,10 +63,11 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 border: Border(
                     top: BorderSide(
                         color: _selectedindex == 0
-                            ? GlobalVariables.selectedNavBarColor
+                            ? GlobalVariables.darkNavBarColor
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
+              padding: const EdgeInsets.only(top: 5.0),
               child: const Icon(FeatherIcons.home),
             ),
             label: "Home",
@@ -78,11 +79,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 border: Border(
                     top: BorderSide(
                         color: _selectedindex == 1
-                            ? GlobalVariables.selectedNavBarColor
+                            ? GlobalVariables.darkNavBarColor
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
               child: const Icon(FeatherIcons.search),
+              padding: const EdgeInsets.only(top: 5.0),
             ),
             label: "Category",
           ),
@@ -93,7 +95,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 border: Border(
                     top: BorderSide(
                         color: _selectedindex == 2
-                            ? GlobalVariables.selectedNavBarColor
+                            ? GlobalVariables.darkNavBarColor
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
@@ -102,6 +104,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                   badgeContent: Text(userCartLen.toString()),
                   badgeColor: Colors.white,
                   child: const Icon(FeatherIcons.shoppingCart)),
+              padding: const EdgeInsets.only(top: 5.0),
             ),
             label: "Cart",
           ),
@@ -112,11 +115,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 border: Border(
                     top: BorderSide(
                         color: _selectedindex == 3
-                            ? GlobalVariables.selectedNavBarColor
+                            ? GlobalVariables.darkNavBarColor
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
               child: const Icon(FeatherIcons.user),
+              padding: const EdgeInsets.only(top: 5.0),
             ),
             label: "User",
           ),

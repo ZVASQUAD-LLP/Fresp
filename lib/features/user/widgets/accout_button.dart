@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fresp/constants/global_variables.dart';
 
 class AccountButton extends StatelessWidget {
   final String text;
@@ -17,7 +18,7 @@ class AccountButton extends StatelessWidget {
             color: Colors.white),
         child: OutlinedButton(
             style: ElevatedButton.styleFrom(
-              primary: Colors.black12.withOpacity(0.03),
+              primary: GlobalVariables.secondaryColorYellow.withOpacity(0.5),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50),
               ),

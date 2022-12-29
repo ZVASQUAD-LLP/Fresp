@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fresp/common/widgets/text_widget.dart';
+import 'package:fresp/constants/global_variables.dart';
 import 'package:fresp/features/address/screen/address_screen.dart';
 import 'package:fresp/features/order/screen/order_screen.dart';
 import 'package:fresp/providers/user_detail_provider.dart';
@@ -36,7 +37,7 @@ class CartSubtotal extends StatelessWidget {
             children: [
               FittedBox(
                 child: TextWidget(
-                  text: 'Total: \₹$sum_round',
+                  text: 'Total: \₹ $sum_round',
                   color: Colors.black,
                   textSize: 20,
                   isTitle: true,
@@ -44,18 +45,18 @@ class CartSubtotal extends StatelessWidget {
               ),
               const Spacer(),
               Material(
-                  color: Color.fromARGB(255, 7, 100, 11),
+                  color: GlobalVariables.secondaryColorYellow,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(10),
                       onTap: navigateToOrderScreen,
                       //  user.address.isEmpty?navigateToAddress:OrderScreen()
                       child: Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: const EdgeInsets.all(15.0),
                         child: TextWidget(
                           text: 'Order Now',
-                          textSize: 20,
-                          color: Colors.white,
+                          textSize: 16,
+                          color: Colors.black,
                         ),
                       ))),
             ],

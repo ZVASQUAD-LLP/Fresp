@@ -36,8 +36,8 @@ class _OrdersState extends State<Orders> {
               child: Text(
                 'See all',
                 style: TextStyle(
-                  fontSize: 18,
-                  color: GlobalVariables.selectedNavBarColor,
+                  fontSize: 15,
+                  color: GlobalVariables.secondaryColor,
                   fontWeight: FontWeight.w600,
                 ),
               ),
