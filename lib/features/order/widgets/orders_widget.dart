@@ -4,6 +4,8 @@ import 'package:fresp/common/widgets/custom_button.dart';
 import 'package:fresp/common/widgets/text_widget.dart';
 import 'package:fresp/constants/global_variables.dart';
 import 'package:fresp/constants/utils.dart';
+import 'package:fresp/features/address/screen/address_screen.dart';
+import 'package:fresp/features/address/screen/add_address_screen.dart';
 import 'package:fresp/features/address/services/Address_services.dart';
 import 'package:fresp/features/order/services/order_service.dart';
 import 'package:fresp/features/order/widgets/custom_text_widget.dart';
@@ -76,6 +78,11 @@ class _OrdersWidgetState extends State<OrdersWidget> {
         .map((e) => sum += e['quantity'] * e['product']['price'] as double)
         .toList();
 
+    void navigateToAddressScreen() {
+      Navigator.pushNamed(context, AddAddressScreen.routeName,
+          arguments: AddAddressScreen);
+    }
+
     String sum_round = sum.toStringAsFixed(2);
     void createOrder() async {
       order_id = await orderServices.createOrder(context, address!);
@@ -99,21 +106,23 @@ class _OrdersWidgetState extends State<OrdersWidget> {
       }
     }
 
-    return Padding(
-      padding: EdgeInsets.all(8.0),
+    return Scaffold(
+        body: Padding(
+      padding: EdgeInsets.all(10.0),
       child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(
           'Order Details:',
-          style: TextStyle(color: Colors.red[400], fontSize: 20),
+          style: TextStyle(color: GlobalVariables.secondaryColor, fontSize: 20),
         ),
         const SizedBox(
-          height: 10,
+          height: 20,
         ),
         Text(
-          'Total Price: \₹$sum_round',
+          'Total Price: \₹ $sum_round',
           style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         ),
         Container(
+          padding: EdgeInsets.all(5.0),
           height: 230,
           child: ListView.builder(
             itemCount: user.cart.length,
@@ -123,8 +132,10 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                   child: Container(
                       height: 50,
                       decoration: BoxDecoration(
-                          border: Border.all(width: 2, color: Colors.black12),
-                          borderRadius: BorderRadius.circular(4)),
+                          border: Border(
+                              bottom: BorderSide(
+                                  color: Colors.black38, width: 1.5))),
+                      // borderRadius: BorderRadius.circular(4)),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: CustomTextWidget(
@@ -135,28 +146,46 @@ class _OrdersWidgetState extends State<OrdersWidget> {
           ),
         ),
         const Text("Delivering to this address:"),
-        SizedBox(
-          width: double.infinity,
-          child: DropdownButton(
-            onChanged: (String? newValue) {
-              setState(() {
-                address = newValue!;
-              });
-            },
-            value: address,
-            icon: const Icon(FeatherIcons.arrowDown),
-            items: addresses.map((Address item) {
-              return DropdownMenuItem(
-                  value: item.id,
-                  child: Text('${item.apartment}, ${item.street}'));
-            }).toList(),
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(
+              width: 310,
+              child: DropdownButton(
+                isExpanded: true,
+                onChanged: (String? newValue) {
+                  setState(() {
+                    address = newValue!;
+                  });
+                },
+                value: address,
+                icon: const Icon(Icons.arrow_drop_down_rounded),
+                items: addresses.map((Address item) {
+                  return DropdownMenuItem(
+                      value: item.id,
+                      child: Text('${item.apartment}, ${item.street}'));
+                }).toList(),
+              ),
+            ),
+            SizedBox(
+              width: 20,
+            ),
+            SizedBox(
+              width: 30,
+              child: FloatingActionButton(
+                child: Icon(Icons.add_outlined),
+                backgroundColor: GlobalVariables.secondaryColor,
+                foregroundColor: Colors.black,
+                onPressed: navigateToAddressScreen,
+              ),
+            ),
+          ],
         ),
         CustomButton(
             text: "Proceed to Pay",
-            backgroundColour: GlobalVariables.secondaryColor,
+            backgroundColour: GlobalVariables.secondaryColorYellow,
             onTap: createOrder)
       ]),
-    );
+    ));
   }
 }

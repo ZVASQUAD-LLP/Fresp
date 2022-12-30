@@ -16,10 +16,12 @@ class CustomTextWidget extends StatelessWidget {
     final productCart = context.watch<UserDetailProvider>().user.cart[index];
     final product = Product.fromMap(productCart['product']);
     final quantity = productCart['quantity'];
-    return Center(
+    return Container(
+      padding: EdgeInsets.all(5.0),
       child: Text(
-        '${product.name} x ${quantity}',
+        '${quantity} x ${product.name}',
         style: TextStyle(fontSize: 15),
+        textAlign: TextAlign.left,
       ),
     );
   }

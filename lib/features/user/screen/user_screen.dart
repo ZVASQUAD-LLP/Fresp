@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:fresp/constants/global_variables.dart';
+import 'package:fresp/features/user/widgets/account_details.dart';
 import 'package:fresp/features/user/widgets/accout_button.dart';
 import 'package:fresp/features/user/widgets/below_appbar.dart';
 import 'package:fresp/features/user/widgets/orders.dart';
@@ -15,7 +16,7 @@ class UserScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(60),
+        preferredSize: const Size.fromHeight(80),
         child: AppBar(
           flexibleSpace: Container(
             decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
@@ -47,7 +48,7 @@ class UserScreen extends StatelessWidget {
           SizedBox(
             height: 20,
           ),
-          Orders(),
+          AccountDetails(),
         ],
       ),
     );

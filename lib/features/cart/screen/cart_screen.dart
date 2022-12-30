@@ -87,7 +87,7 @@ class _CartScreenState extends State<CartScreen> {
   //           children: [
   //             FittedBox(
   //               child: TextWidget(
-  //                 text: 'Total Rs.500',
+  //                 text: ' Rs.500',
   //                 color: Colors.black,
   //                 textSize: 20,
   //                 isTitle: true,
