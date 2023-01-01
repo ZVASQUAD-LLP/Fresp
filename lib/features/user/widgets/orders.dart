@@ -31,24 +31,24 @@ class _OrdersState extends State<Orders> {
                 ),
               ),
             ),
-            Container(
-              padding: const EdgeInsets.only(right: 15),
-              child: Text(
-                'See all',
-                style: TextStyle(
-                  fontSize: 15,
-                  color: GlobalVariables.secondaryColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
+            // Container(
+            //   padding: const EdgeInsets.only(right: 15),
+            //   child: Text(
+            //     'See all',
+            //     style: TextStyle(
+            //       fontSize: 15,
+            //       color: GlobalVariables.secondaryColor,
+            //       fontWeight: FontWeight.w600,
+            //     ),
+            //   ),
+            // ),
           ],
         ),
         Container(
           height: 170,
           padding: const EdgeInsets.only(left: 10, top: 20, right: 0),
           child: ListView.builder(
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.vertical,
               itemCount: user.orderHistory.length,
               itemBuilder: ((context, index) {
                 return SingleProduct(

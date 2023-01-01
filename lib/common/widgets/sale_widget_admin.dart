@@ -50,7 +50,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
           navigateToProduct(product?.id);
         },
         child: Container(
-            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 15),
             child: Material(
               borderRadius: BorderRadius.circular(5),
               color: Color.fromARGB(255, 245, 244, 244),
@@ -60,7 +60,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                     navigateToProduct(product?.id);
                   },
                   child: Padding(
-                      padding: const EdgeInsets.all(7.0),
+                      padding: const EdgeInsets.all(10.0),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -79,17 +79,16 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                                 child: Image.network(
                                   product!.images[0],
                                   width: size.width * 0.30,
-                                  height: size.width * 0.18,
+                                  height: size.height * 0.08,
                                   fit: BoxFit.fill,
                                 ),
                               ),
                             ),
                             Padding(
                               padding:
-                                  const EdgeInsets.only(left: 5.0, top: 5.0),
+                                  const EdgeInsets.only(left: 0.0, top: 5.0),
                               child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Container(
                                       color: Colors.transparent,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fresp/features/auth/services/auth_service.dart';
 import 'package:fresp/features/user/widgets/accout_button.dart';
 import 'package:fresp/features/user/widgets/orders.dart';
+import 'package:fresp/features/user/widgets/account_details.dart';
 
 class TopButtons extends StatefulWidget {
   const TopButtons({Key? key}) : super(key: key);
@@ -23,7 +24,9 @@ class _TopButtonsState extends State<TopButtons> {
       const Orders();
     }
 
-    void myAccount() {}
+    void myAccount() async {
+      const AccountDetails();
+    }
 
     return Column(
       children: [

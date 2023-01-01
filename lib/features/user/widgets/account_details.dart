@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:fresp/common/widgets/custom_button.dart';
 import 'package:fresp/constants/global_variables.dart';
+import 'package:fresp/features/address/screen/add_address_screen.dart';
+import 'package:fresp/features/user/widgets/single_address.dart';
 import 'package:fresp/features/user/widgets/single_product.dart';
 import 'package:fresp/providers/user_detail_provider.dart';
 import 'package:fresp/common/widgets/text_widget.dart';
@@ -14,6 +16,11 @@ class AccountDetails extends StatefulWidget {
 }
 
 class _AccountDetails extends State<AccountDetails> {
+  void navigateToAddressScreen() {
+    Navigator.pushNamed(context, AddAddressScreen.routeName,
+        arguments: AddAddressScreen);
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserDetailProvider>(context).user;
@@ -45,7 +52,7 @@ class _AccountDetails extends State<AccountDetails> {
                       //  user.address.isEmpty?navigateToAddress:OrderScreen()
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 20, vertical: 10),
+                            horizontal: 30, vertical: 10),
                         child: TextWidget(
                           text: 'Edit',
                           textSize: 16,
@@ -53,18 +60,6 @@ class _AccountDetails extends State<AccountDetails> {
                         ),
                       ))),
             )
-
-            // Container(
-            //   padding: const EdgeInsets.only(right: 15),
-            //   child: Text(
-            //     'See all',
-            //     style: TextStyle(
-            //       fontSize: 15,
-            //       color: GlobalVariables.secondaryColor,
-            //       fontWeight: FontWeight.w600,
-            //     ),
-            //   ),
-            // ),
           ],
         ),
         // Container(
@@ -78,23 +73,92 @@ class _AccountDetails extends State<AccountDetails> {
         //             orderId: user.orderHistory[index].toString());
         //       })),
         // ),
-        ListTile(
-          contentPadding: EdgeInsets.only(left: 25, right: 25, top: 20),
-          tileColor: GlobalVariables.backgroundColor,
-          title: Text('Name: ' + user.name, style: TextStyle(fontSize: 15)),
-          //trailing: IconButton(onPressed: () {}, icon: Icon(Icons.edit))
+        Center(
+          child: Card(
+            margin: EdgeInsets.all(20),
+            shape: RoundedRectangleBorder(
+                side: BorderSide(color: Colors.black38),
+                borderRadius: BorderRadius.circular(10)),
+            shadowColor: Colors.black87,
+            elevation: 5,
+            surfaceTintColor: Colors.black,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                ListTile(
+                  contentPadding: EdgeInsets.only(left: 25, right: 25, top: 10),
+                  tileColor: GlobalVariables.backgroundColor,
+                  title: Text('Name: ' + user.name,
+                      style: TextStyle(fontSize: 15)),
+                  //trailing: IconButton(onPressed: () {}, icon: Icon(Icons.edit))
+                ),
+                ListTile(
+                    contentPadding: EdgeInsets.only(left: 25, right: 25),
+                    tileColor: GlobalVariables.backgroundColor,
+                    title: Text('Email: ' + user.email,
+                        style: TextStyle(fontSize: 15))),
+                Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                    child: ListTile(
+                        contentPadding: EdgeInsets.only(left: 25, right: 25),
+                        tileColor: GlobalVariables.backgroundColor,
+                        title: Text('Mobile: ' + user.number,
+                            style: TextStyle(fontSize: 15)))),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.end,
+                //   children: <Widget>[
+                //     TextButton(
+                //       child: const Text('BUY TICKETS'),
+                //       onPressed: () {/* ... */},
+                //     ),
+                //     const SizedBox(width: 8),
+                //     TextButton(
+                //       child: const Text('LISTEN'),
+                //       onPressed: () {/* ... */},
+                //     ),
+                //     const SizedBox(width: 8),
+                //   ],
+                // ),
+              ],
+            ),
+          ),
         ),
-        ListTile(
-            contentPadding: EdgeInsets.only(left: 25, right: 25),
-            tileColor: GlobalVariables.backgroundColor,
-            title: Text('Email: ' + user.email, style: TextStyle(fontSize: 15)),
-            trailing: IconButton(onPressed: () {}, icon: Icon(Icons.edit))),
-        ListTile(
-            contentPadding: EdgeInsets.only(left: 25, right: 25),
-            tileColor: GlobalVariables.backgroundColor,
-            title:
-                Text('Mobile: ' + user.number, style: TextStyle(fontSize: 15)),
-            trailing: IconButton(onPressed: () {}, icon: Icon(Icons.edit))),
+        Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+          Container(
+            padding: const EdgeInsets.only(left: 20),
+            child: const Text(
+              'Your Addresses',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.black,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          const Spacer(),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            child: Material(
+                color: GlobalVariables.secondaryColorYellow.withOpacity(0.5),
+                borderRadius: BorderRadius.circular(20),
+                child: InkWell(
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: navigateToAddressScreen,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      child: TextWidget(
+                        text: 'Add new',
+                        textSize: 16,
+                        color: Colors.black,
+                      ),
+                    ))),
+          ),
+        ]),
+        Container(
+            height: 230,
+            padding: const EdgeInsets.only(left: 10, top: 10, right: 0),
+            child: SingleAddress()),
       ],
     );
   }
