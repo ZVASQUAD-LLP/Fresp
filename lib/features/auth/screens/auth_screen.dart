@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:fresp/common/widgets/custom_button.dart';
 import 'package:fresp/common/widgets/custom_text_Field.dart';
@@ -114,8 +116,9 @@ class _AuthScreenState extends State<AuthScreen> {
                         //     backgroundColour: Color.fromARGB(255, 36, 83, 203),
                         //     onTap: () => {}),
                         // const SizedBox(height: 10),
-                        FlatButton(
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 15),
+                        TextButton(
+                          style: TextButton.styleFrom(
+                              padding: EdgeInsets.fromLTRB(0, 5, 0, 15)),
                           onPressed: () {
                             //TODO FORGOT PASSWORD SCREEN GOES HERE
                           },
