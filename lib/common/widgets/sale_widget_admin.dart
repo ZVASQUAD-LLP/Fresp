@@ -59,73 +59,74 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                   onTap: () {
                     navigateToProduct(product?.id);
                   },
-                  child: Padding(
-                      padding: const EdgeInsets.all(10.0),
+                  child: Expanded(
+                      //padding: const EdgeInsets.all(10.0),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(5),
-                              child: Container(
-                                decoration: const BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Color(0x54000000),
-                                      spreadRadius: 10,
-                                      blurRadius: 2,
-                                    ),
-                                  ],
+                        ClipRRect(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(5),
+                              topRight: Radius.circular(5)),
+                          child: Container(
+                            decoration: const BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x54000000),
+                                  spreadRadius: 10,
+                                  blurRadius: 2,
                                 ),
-                                child: Image.network(
-                                  product!.images[0],
-                                  width: size.width * 0.30,
-                                  height: size.height * 0.08,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
+                              ],
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 0.0, top: 5.0),
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Container(
-                                      color: Colors.transparent,
-                                      width: 100,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          TextWidget(
-                                            text: product?.name,
-                                            color: color,
-                                            textSize: 15,
-                                            isTitle: true,
-                                          ),
-                                          const SizedBox(
-                                            height: 2,
-                                          ),
-                                          PriceWidget(price: product?.price),
-                                          const SizedBox(height: 0.1),
-                                          // TextWidget(
-                                          //     text: '1kg',
-                                          //     color: color,
-                                          //     textSize: 14,
-                                          //     isTitle: true),
-                                          const SizedBox(height: 0.1),
-                                        ],
+                            child: Image.network(
+                              product!.images[0],
+                              width: size.width * 0.32,
+                              height: size.height * 0.08,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 5.0, top: 5.0, right: 5.0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Container(
+                                  color: Colors.transparent,
+                                  width: 100,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      TextWidget(
+                                        text: product?.name,
+                                        color: color,
+                                        textSize: 15,
+                                        isTitle: true,
                                       ),
-                                    ),
-                                    Container(
-                                      child: InkWell(
-                                          onTap: addToCart,
-                                          child:
-                                              Icon(FeatherIcons.shoppingBag)),
-                                    )
-                                  ]),
-                            )
-                          ]))),
+                                      const SizedBox(
+                                        height: 2,
+                                      ),
+                                      PriceWidget(price: product?.price),
+                                      const SizedBox(height: 0.1),
+                                      // TextWidget(
+                                      //     text: '1kg',
+                                      //     color: color,
+                                      //     textSize: 14,
+                                      //     isTitle: true),
+                                      const SizedBox(height: 0.1),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  child: InkWell(
+                                      onTap: addToCart,
+                                      child: Icon(FeatherIcons.shoppingBag)),
+                                )
+                              ]),
+                        )
+                      ]))),
             )));
   }
 }

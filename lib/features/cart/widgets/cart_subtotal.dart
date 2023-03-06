@@ -45,7 +45,7 @@ class CartSubtotal extends StatelessWidget {
               ),
               const Spacer(),
               Material(
-                  color: GlobalVariables.secondaryColorYellow,
+                  color: GlobalVariables.selectedNavBarColor,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
                       borderRadius: BorderRadius.circular(10),

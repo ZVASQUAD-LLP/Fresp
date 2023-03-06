@@ -192,7 +192,7 @@ class _ProductDetailState extends State<ProductDetails> {
             ),
             Center(
               child: Material(
-                  color: GlobalVariables.secondaryColorYellow,
+                  color: GlobalVariables.selectedNavBarColor,
                   borderRadius: BorderRadius.circular(5),
                   child: InkWell(
                       borderRadius: BorderRadius.circular(12),

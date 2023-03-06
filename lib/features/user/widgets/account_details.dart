@@ -44,7 +44,7 @@ class _AccountDetails extends State<AccountDetails> {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
               child: Material(
-                  color: GlobalVariables.secondaryColorYellow.withOpacity(0.5),
+                  color: GlobalVariables.selectedNavBarColor.withOpacity(0.7),
                   borderRadius: BorderRadius.circular(20),
                   child: InkWell(
                       borderRadius: BorderRadius.circular(20),
@@ -102,7 +102,7 @@ class _AccountDetails extends State<AccountDetails> {
                     child: ListTile(
                         contentPadding: EdgeInsets.only(left: 25, right: 25),
                         tileColor: GlobalVariables.backgroundColor,
-                        title: Text('Mobile: ' + user.number,
+                        title: Text('Mobile: +91-' + user.number,
                             style: TextStyle(fontSize: 15)))),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.end,
@@ -139,7 +139,7 @@ class _AccountDetails extends State<AccountDetails> {
           Container(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
             child: Material(
-                color: GlobalVariables.secondaryColorYellow.withOpacity(0.5),
+                color: GlobalVariables.selectedNavBarColor.withOpacity(0.7),
                 borderRadius: BorderRadius.circular(20),
                 child: InkWell(
                     borderRadius: BorderRadius.circular(20),

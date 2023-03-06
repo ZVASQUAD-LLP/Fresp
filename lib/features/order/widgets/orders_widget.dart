@@ -183,7 +183,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
         ),
         CustomButton(
             text: "Proceed to Pay",
-            backgroundColour: GlobalVariables.secondaryColorYellow,
+            backgroundColour: GlobalVariables.selectedNavBarColor,
             onTap: createOrder)
       ]),
     ));

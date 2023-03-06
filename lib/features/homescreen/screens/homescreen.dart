@@ -165,17 +165,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    padding: const EdgeInsets.only(right: 20),
-                                    child: Text(
-                                      'See all',
-                                      style: TextStyle(
-                                        fontSize: 15,
-                                        color: GlobalVariables.secondaryColor,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                  ),
+                                  // Container(
+                                  //   padding: const EdgeInsets.only(right: 20),
+                                  //   child: Text(
+                                  //     'See all',
+                                  //     style: TextStyle(
+                                  //       fontSize: 15,
+                                  //       color: GlobalVariables.secondaryColor,
+                                  //       fontWeight: FontWeight.w600,
+                                  //     ),
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                               ProductList(
