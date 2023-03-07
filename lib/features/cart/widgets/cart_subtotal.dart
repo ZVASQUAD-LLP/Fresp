@@ -57,6 +57,7 @@ class CartSubtotal extends StatelessWidget {
                           text: 'Order Now',
                           textSize: 16,
                           color: Colors.black,
+                          isTitle: true,
                         ),
                       ))),
             ],

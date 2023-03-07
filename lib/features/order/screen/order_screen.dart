@@ -24,10 +24,11 @@ class _OrderScreenState extends State<OrderScreen> {
         child: AppBar(
           leading: IconButton(
             onPressed: Navigator.of(context).pop,
-            icon: Icon(FeatherIcons.arrowLeft),
+            icon: const Icon(FeatherIcons.arrowLeft),
           ),
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration:
+                const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,6 +52,7 @@ class _OrderScreenState extends State<OrderScreen> {
               ? AddressScreen()
               : Container(
                   height: 470,
+                  // ignore: prefer_const_constructors
                   child: Padding(
                     padding: const EdgeInsets.all(15.0),
                     child: OrdersWidget(),

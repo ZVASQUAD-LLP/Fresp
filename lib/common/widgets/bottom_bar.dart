@@ -1,17 +1,12 @@
 import 'package:badges/badges.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:fresp/constants/global_variables.dart';
 import 'package:fresp/features/cart/screen/cart_screen.dart';
 import 'package:fresp/features/categories/screen/categories_screen.dart';
 import 'package:fresp/features/user/screen/user_screen.dart';
-import 'package:fresp/models/user.dart';
 import 'package:fresp/providers/user_detail_provider.dart';
 import 'package:provider/provider.dart';
-
-import '../../providers/user_provider.dart';
 import '../../features/homescreen/screens/homescreen.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -83,8 +78,8 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
-              child: const Icon(FeatherIcons.search),
               padding: const EdgeInsets.only(top: 5.0),
+              child: const Icon(FeatherIcons.search),
             ),
             label: "Category",
           ),
@@ -99,12 +94,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
+              padding: const EdgeInsets.only(top: 5.0),
               child: Badge(
                   elevation: 0,
                   badgeContent: Text(userCartLen.toString()),
                   badgeColor: Colors.white,
                   child: const Icon(FeatherIcons.shoppingCart)),
-              padding: const EdgeInsets.only(top: 5.0),
             ),
             label: "Cart",
           ),
@@ -119,8 +114,8 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
-              child: const Icon(FeatherIcons.user),
               padding: const EdgeInsets.only(top: 5.0),
+              child: const Icon(FeatherIcons.user),
             ),
             label: "User",
           ),

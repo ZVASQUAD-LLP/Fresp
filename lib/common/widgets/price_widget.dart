@@ -1,4 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_interpolation_to_compose_strings
 import 'package:flutter/material.dart';
 import 'package:fresp/constants/global_variables.dart';
 

@@ -22,43 +22,68 @@ class OrdersWidget extends StatefulWidget {
 }
 
 class _OrdersWidgetState extends State<OrdersWidget> {
+  // final _razorpay = Razorpay();
   final _razorpay = Razorpay();
   final AddressServices addressServices = AddressServices();
   final OrderServices orderServices = OrderServices();
   List<Address> addresses = [];
 
   String? address = "fetching";
+
+  @override
+  void initState() {
+    super.initState();
+    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+    getAddresses();
+  }
+
   void _handlePaymentSuccess(PaymentSuccessResponse response) {
-    // Do something when payment succeeds
-    print("Done");
+    print("Payment Success");
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
-    // Do something when payment fails
-    print("payment ERRORRRRRRRRR");
-    print(response.message);
+    print("Payment Error");
   }
 
   void _handleExternalWallet(ExternalWalletResponse response) {
-    // Do something when an external wallet is selected
-    print("external wallet selected");
+    print("External Wallet");
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _razorpay.clear();
   }
 
-  @override
-  void initState() {
-    _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
-    _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
-    _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
-    super.initState();
-    getAddresses();
-  }
+  // void _handlePaymentSuccess(PaymentSuccessResponse response) {
+  //   print("Payment Success");
+  // }
+
+  // void _handlePaymentError(PaymentFailureResponse response) {
+  //   print("Payment Error");
+  // }
+
+  // void _handleExternalWallet(ExternalWalletResponse response) {
+  //   print("External Wallet");
+  // }
+
+  // @override
+  // void dispose() {
+  //   // TODO: implement dispose
+  //   super.dispose();
+  //   _razorpay.clear();
+  // }
+
+  // @override
+  // void initState() {
+  //   _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
+  //   _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
+  //   _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
+  //   super.initState();
+  //   getAddresses();
+  // }
 
   void getAddresses() async {
     var addressList = await addressServices.getAddress(context);
@@ -84,19 +109,22 @@ class _OrdersWidgetState extends State<OrdersWidget> {
     }
 
     String sum_round = sum.toStringAsFixed(2);
+    int sum_paise = sum.toInt() * 100; //for razorpay
     void createOrder() async {
       order_id = await orderServices.createOrder(context, address!);
-
       var options = {
         'key': 'rzp_test_L63XqMTT9XVghC',
-        'amount': sum_round * 100, //in the smallest currency sub-unit.
+        'amount': sum_paise, //in the smallest currency sub-unit.
         'name': 'Fresp',
-        'order_id': order_id, // Generate order_id using Orders API
-        'timeout': 300, // in seconds
+        //'order_id': order_id, // Generate order_id using Orders API
+        'timeout': 500, // in seconds
         'prefill': {
           'contact': user.number,
           'email': user.email,
           'name': user.name
+        },
+        'external': {
+          'wallets': ['paytm']
         }
       };
       try {
