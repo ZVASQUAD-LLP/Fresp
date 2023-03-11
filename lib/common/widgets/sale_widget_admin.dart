@@ -119,11 +119,9 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                                     ],
                                   ),
                                 ),
-                                Container(
-                                  child: InkWell(
-                                      onTap: addToCart,
-                                      child: Icon(FeatherIcons.shoppingBag)),
-                                )
+                                InkWell(
+                                    onTap: addToCart,
+                                    child: Icon(FeatherIcons.shoppingBag))
                               ]),
                         )
                       ]))),

@@ -44,7 +44,7 @@ class UserScreen extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          //TopButtons(),
+          TopButtons(),
           SizedBox(
             height: 20,
           ),

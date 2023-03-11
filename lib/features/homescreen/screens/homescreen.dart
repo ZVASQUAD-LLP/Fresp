@@ -135,57 +135,55 @@ class _HomeScreenState extends State<HomeScreen> {
             //   height: 15,
             // ),
             // HomePageItems(headingCategory: "Groceries"),
-            productCategories == null
-                ? const Center(
-                    child: Text("Empty"),
-                  )
-                : Container(
-                    height: 420,
-                    child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      itemCount: productCategories?.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Container(
-                              child: Column(
+            if (productCategories == null)
+              const Center(
+                child: Text("Empty"),
+              )
+            else
+              SizedBox(
+                height: 420,
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemCount: productCategories?.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.only(left: 20),
-                                    child: Text(
-                                      productCategories![index].name,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
+                              Container(
+                                padding: const EdgeInsets.only(left: 20),
+                                child: Text(
+                                  productCategories![index].name,
+                                  style: const TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w600,
                                   ),
-                                  // Container(
-                                  //   padding: const EdgeInsets.only(right: 20),
-                                  //   child: Text(
-                                  //     'See all',
-                                  //     style: TextStyle(
-                                  //       fontSize: 15,
-                                  //       color: GlobalVariables.secondaryColor,
-                                  //       fontWeight: FontWeight.w600,
-                                  //     ),
-                                  //   ),
-                                  // ),
-                                ],
+                                ),
                               ),
-                              ProductList(
-                                  category: productCategories![index].id),
+                              // Container(
+                              //   padding: const EdgeInsets.only(right: 20),
+                              //   child: Text(
+                              //     'See all',
+                              //     style: TextStyle(
+                              //       fontSize: 15,
+                              //       color: GlobalVariables.secondaryColor,
+                              //       fontWeight: FontWeight.w600,
+                              //     ),
+                              //   ),
+                              // ),
                             ],
-                          )),
-                        );
-                      },
-                    ),
-                  ),
+                          ),
+                          ProductList(category: productCategories![index].id),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
           ]),
         ));
   }

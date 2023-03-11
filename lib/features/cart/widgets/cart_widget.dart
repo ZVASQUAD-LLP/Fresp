@@ -66,7 +66,7 @@ class _CartWidgetState extends State<CartWidget> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).canvasColor.withOpacity(0.2),
@@ -77,8 +77,8 @@ class _CartWidgetState extends State<CartWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          height: 90,
-                          width: 90,
+                          height: 80,
+                          width: 70,
                           decoration: BoxDecoration(
                             color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(10),
@@ -87,7 +87,7 @@ class _CartWidgetState extends State<CartWidget> {
                             borderRadius: BorderRadius.circular(8),
                             child: Image.network(
                               product.images[0],
-                              width: 200,
+                              width: 150,
                               height: 150,
                               fit: BoxFit.fill,
                             ),
@@ -98,11 +98,12 @@ class _CartWidgetState extends State<CartWidget> {
                               top: 4.0, bottom: 4.0, left: 10.0, right: 4.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               TextWidget(
                                 text: product.name,
                                 color: Colors.black,
-                                textSize: 18,
+                                textSize: 17,
                                 isTitle: true,
                               ),
                               const SizedBox(
@@ -161,7 +162,7 @@ class _CartWidgetState extends State<CartWidget> {
                         ),
                         const Spacer(),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

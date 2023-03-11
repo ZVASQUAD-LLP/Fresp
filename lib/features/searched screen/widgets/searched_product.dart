@@ -31,12 +31,12 @@ class SearchedProduct extends StatelessWidget {
               arguments: product);
         },
         child: Container(
-          height: 110,
+          height: 90,
           child: Row(
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).canvasColor.withOpacity(0.2),
@@ -48,7 +48,7 @@ class SearchedProduct extends StatelessWidget {
                       children: [
                         Container(
                           height: 90,
-                          width: 90,
+                          width: 70,
                           decoration: BoxDecoration(
                             color: Theme.of(context).cardColor,
                             borderRadius: BorderRadius.circular(5),
@@ -57,8 +57,6 @@ class SearchedProduct extends StatelessWidget {
                             borderRadius: BorderRadius.circular(5),
                             child: Image.network(
                               product.images[0],
-                              width: 200,
-                              height: 150,
                               fit: BoxFit.fill,
                             ),
                           ),
@@ -71,7 +69,7 @@ class SearchedProduct extends StatelessWidget {
                               TextWidget(
                                 text: product.name,
                                 color: Colors.black,
-                                textSize: 20,
+                                textSize: 17,
                                 isTitle: true,
                               ),
                               const SizedBox(

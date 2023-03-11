@@ -4,7 +4,9 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:fresp/constants/global_variables.dart';
 import 'package:fresp/features/cart/screen/cart_screen.dart';
 import 'package:fresp/features/categories/screen/categories_screen.dart';
+import 'package:fresp/features/searched%20screen/screens/searched_screen.dart';
 import 'package:fresp/features/user/screen/user_screen.dart';
+import 'package:fresp/models/category.dart';
 import 'package:fresp/providers/user_detail_provider.dart';
 import 'package:provider/provider.dart';
 import '../../features/homescreen/screens/homescreen.dart';
@@ -24,6 +26,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     const CategoriesScreen(),
     const CartScreen(),
     const UserScreen(),
+    // const SearchedScreen(),
   ];
   void _selectedPage(int index) {
     setState(() {
