@@ -34,21 +34,21 @@ class _SingleProductState extends State<SingleProduct> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: DecoratedBox(
         decoration: BoxDecoration(
-            border: Border.all(color: Colors.black12, width: 1.5),
-            borderRadius: BorderRadius.circular(5),
+            border: Border.all(color: Colors.black38, width: 1.3),
+            borderRadius: BorderRadius.circular(10),
             color: Colors.white),
         child: Container(
-            width: 140,
-            padding: const EdgeInsets.all(10),
+            width: 150,
+            padding: const EdgeInsets.all(15),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(order.orderId),
-                Text((order.totalPrice).toString())
+                Text((order.totalPrice).toStringAsFixed(2))
               ],
             )),
       ),

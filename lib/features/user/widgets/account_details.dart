@@ -3,6 +3,7 @@ import 'package:fresp/common/widgets/custom_button.dart';
 import 'package:fresp/constants/global_variables.dart';
 import 'package:fresp/features/auth/services/auth_service.dart';
 import 'package:fresp/features/address/screen/add_address_screen.dart';
+import 'package:fresp/features/user/widgets/orders.dart';
 import 'package:fresp/features/user/widgets/single_address.dart';
 import 'package:fresp/features/user/widgets/single_product.dart';
 import 'package:fresp/providers/user_detail_provider.dart';
@@ -67,17 +68,6 @@ class _AccountDetails extends State<AccountDetails> {
             ),
           ],
         ),
-        // Container(
-        //   height: 300,
-        //   padding: const EdgeInsets.only(left: 10, top: 20, right: 0),
-        //   child: ListView.builder(
-        //       scrollDirection: Axis.horizontal,
-        //       itemCount: user.orderHistory.length,
-        //       itemBuilder: ((context, index) {
-        //         return SingleProduct(
-        //             orderId: user.orderHistory[index].toString());
-        //       })),
-        // ),
         Center(
           child: Card(
             margin: EdgeInsets.all(20),
@@ -85,7 +75,6 @@ class _AccountDetails extends State<AccountDetails> {
                 side: BorderSide(color: Colors.black38),
                 borderRadius: BorderRadius.circular(10)),
             shadowColor: Colors.black87,
-            elevation: 5,
             surfaceTintColor: Colors.black,
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -113,6 +102,33 @@ class _AccountDetails extends State<AccountDetails> {
             ),
           ),
         ),
+        //Your Orders Section
+        Container(
+          margin: const EdgeInsets.only(bottom: 20.0, left: 20.0),
+          alignment: Alignment.centerLeft,
+          child: const Text(
+            'Your Orders',
+            textAlign: TextAlign.left,
+            style: TextStyle(
+              fontSize: 18,
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+        Container(
+          height: 170,
+          padding:
+              const EdgeInsets.only(left: 10, bottom: 20, top: 10, right: 30),
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: user.orderHistory.length,
+              itemBuilder: ((context, index) {
+                return SingleProduct(
+                    orderId: user.orderHistory[index].toString());
+              })),
+        ),
+        //Your Addresses
         Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
           Container(
             padding: const EdgeInsets.only(left: 20),
@@ -147,7 +163,7 @@ class _AccountDetails extends State<AccountDetails> {
         ]),
         Container(
             height: 230,
-            padding: const EdgeInsets.only(left: 10, top: 10, right: 0),
+            padding: const EdgeInsets.only(left: 10, top: 10, right: 10),
             child: SingleAddress()),
       ],
     );
