@@ -50,7 +50,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
           navigateToProduct(product?.id);
         },
         child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 15),
+            padding: const EdgeInsets.only(left: 7, top: 7, right: 7),
             child: Material(
               borderRadius: BorderRadius.circular(5),
               color: Color.fromARGB(255, 245, 244, 244),
@@ -59,72 +59,68 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                   onTap: () {
                     navigateToProduct(product?.id);
                   },
-                  child: Expanded(
-                      //padding: const EdgeInsets.all(10.0),
+                  child: Padding(
+                      padding: const EdgeInsets.only(bottom: 0.0),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(5),
-                              topRight: Radius.circular(5)),
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0x54000000),
-                                  spreadRadius: 10,
-                                  blurRadius: 2,
+                            ClipRRect(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(5)),
+                              child: Container(
+                                decoration: const BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x54000000),
+                                      spreadRadius: 10,
+                                      blurRadius: 2,
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                            child: Image.network(
-                              product!.images[0],
-                              width: size.width * 0.32,
-                              height: size.height * 0.08,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 5.0, top: 5.0, right: 5.0),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  color: Colors.transparent,
-                                  width: 100,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      TextWidget(
-                                        text: product?.name,
-                                        color: color,
-                                        textSize: 15,
-                                        isTitle: true,
-                                      ),
-                                      const SizedBox(
-                                        height: 2,
-                                      ),
-                                      PriceWidget(price: product?.price),
-                                      const SizedBox(height: 0.1),
-                                      // TextWidget(
-                                      //     text: '1kg',
-                                      //     color: color,
-                                      //     textSize: 14,
-                                      //     isTitle: true),
-                                      const SizedBox(height: 0.1),
-                                    ],
-                                  ),
+                                child: Image.network(
+                                  product!.images[0],
+                                  width: size.shortestSide * 0.32,
+                                  height: size.height * 0.08,
+                                  fit: BoxFit.fill,
                                 ),
-                                InkWell(
-                                    onTap: addToCart,
-                                    child: Icon(FeatherIcons.shoppingBag))
-                              ]),
-                        )
-                      ]))),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 5.0, top: 7.0, right: 4.0),
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      color: Colors.transparent,
+                                      width: 100,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          TextWidget(
+                                            text: "${product?.name}\n",
+                                            color: color,
+                                            textSize: 16,
+                                            isTitle: true,
+                                          ),
+                                          const SizedBox(
+                                            height: 5,
+                                          ),
+                                          PriceWidget(price: product?.price),
+                                          const SizedBox(
+                                            height: 23,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    InkWell(
+                                        onTap: addToCart,
+                                        child: Icon(FeatherIcons.shoppingBag))
+                                  ]),
+                            )
+                          ]))),
             )));
   }
 }

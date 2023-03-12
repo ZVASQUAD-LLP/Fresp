@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:fresp/constants/global_variables.dart';
 import 'package:fresp/features/admin/screens/posts_screen.dart';
+import 'package:fresp/features/auth/services/auth_service.dart';
+import 'package:fresp/features/user/widgets/accout_button.dart';
 
 class AdminScreen extends StatefulWidget {
   const AdminScreen({super.key});
@@ -11,6 +13,7 @@ class AdminScreen extends StatefulWidget {
 }
 
 class _AdminScreenState extends State<AdminScreen> {
+  final AuthService authService = AuthService();
   int _selectedindex = 0;
   final List _pages = [
     const PostsScreen(),
@@ -31,6 +34,10 @@ class _AdminScreenState extends State<AdminScreen> {
   double bottomBarWidth = 42;
   @override
   Widget build(BuildContext context) {
+    void logOut() {
+      authService.logOutUser(context);
+    }
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(50),
@@ -48,7 +55,10 @@ class _AdminScreenState extends State<AdminScreen> {
               ),
               Container(
                   padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: Icon(FeatherIcons.user) //TODO: change icon
+                  child: AccountButton(
+                    text: "LG",
+                    onTap: logOut,
+                  ) //TODO: change icon
 
                   ),
             ],
