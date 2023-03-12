@@ -14,7 +14,7 @@ const razorpay_secret = process.env.Razorpay_secret;
 
 //razorpay init
 const razorpayInstance = new Razorpay({
-	key_id: rzp_test_T1BSIPOxQ388K7,
+	key_id: razorpay_key,
 	key_secret: razorpay_secret
 });
 let orderRes;
