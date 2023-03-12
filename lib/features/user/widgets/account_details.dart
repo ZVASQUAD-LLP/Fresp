@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fresp/common/widgets/custom_button.dart';
 import 'package:fresp/constants/global_variables.dart';
+import 'package:fresp/features/auth/services/auth_service.dart';
 import 'package:fresp/features/address/screen/add_address_screen.dart';
 import 'package:fresp/features/user/widgets/single_address.dart';
 import 'package:fresp/features/user/widgets/single_product.dart';
@@ -16,9 +17,14 @@ class AccountDetails extends StatefulWidget {
 }
 
 class _AccountDetails extends State<AccountDetails> {
+  final AuthService authService = AuthService();
   void navigateToAddressScreen() {
     Navigator.pushNamed(context, AddAddressScreen.routeName,
         arguments: AddAddressScreen);
+  }
+
+  void logOut() {
+    authService.logOutUser(context);
   }
 
   @override
@@ -48,18 +54,17 @@ class _AccountDetails extends State<AccountDetails> {
                   borderRadius: BorderRadius.circular(20),
                   child: InkWell(
                       borderRadius: BorderRadius.circular(20),
-                      // onTap: navigateToOrderScreen,
-                      //  user.address.isEmpty?navigateToAddress:OrderScreen()
+                      onTap: logOut,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 30, vertical: 10),
+                            horizontal: 20, vertical: 10),
                         child: TextWidget(
-                          text: 'Edit',
+                          text: 'Log Out',
                           textSize: 16,
                           color: Colors.black,
                         ),
                       ))),
-            )
+            ),
           ],
         ),
         // Container(
@@ -104,21 +109,6 @@ class _AccountDetails extends State<AccountDetails> {
                         tileColor: GlobalVariables.backgroundColor,
                         title: Text('Mobile: +91-' + user.number,
                             style: TextStyle(fontSize: 15)))),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.end,
-                //   children: <Widget>[
-                //     TextButton(
-                //       child: const Text('BUY TICKETS'),
-                //       onPressed: () {/* ... */},
-                //     ),
-                //     const SizedBox(width: 8),
-                //     TextButton(
-                //       child: const Text('LISTEN'),
-                //       onPressed: () {/* ... */},
-                //     ),
-                //     const SizedBox(width: 8),
-                //   ],
-                // ),
               ],
             ),
           ),

@@ -109,12 +109,12 @@ class _OrdersWidgetState extends State<OrdersWidget> {
     }
 
     String sum_round = sum.toStringAsFixed(2);
-    int sum_paise = sum.toInt() * 100; //for razorpay
+    double sum_paise = sum * 100.0; //for razorpay
     void createOrder() async {
       order_id = await orderServices.createOrder(context, address!);
       var options = {
         'key': 'rzp_test_L63XqMTT9XVghC',
-        'amount': sum_paise, //in the smallest currency sub-unit.
+        'amount': sum_paise.toInt(), //in the smallest currency sub-unit.
         'name': 'Fresp',
         //'order_id': order_id, // Generate order_id using Orders API
         'timeout': 500, // in seconds
@@ -178,7 +178,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             SizedBox(
-              width: 310,
+              width: 280,
               child: DropdownButton(
                 isExpanded: true,
                 onChanged: (String? newValue) {
@@ -196,7 +196,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
               ),
             ),
             SizedBox(
-              width: 20,
+              width: 25,
             ),
             SizedBox(
               width: 30,

@@ -80,15 +80,15 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                                 ),
                                 child: Image.network(
                                   product!.images[0],
-                                  width: size.shortestSide * 0.32,
-                                  height: size.height * 0.08,
+                                  width: size.shortestSide * 0.34,
+                                  height: size.height * 0.088,
                                   fit: BoxFit.fill,
                                 ),
                               ),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(
-                                  left: 5.0, top: 7.0, right: 4.0),
+                                  left: 5.0, top: 7.0, right: 5.0),
                               child: Row(
                                   mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
@@ -110,7 +110,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                                           ),
                                           PriceWidget(price: product?.price),
                                           const SizedBox(
-                                            height: 23,
+                                            height: 24,
                                           ),
                                         ],
                                       ),
