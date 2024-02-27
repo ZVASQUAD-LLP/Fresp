@@ -29,11 +29,6 @@ class UserScreen extends StatelessWidget {
                 child: Image.asset('assets/images/logo_transperant.png',
                     width: 150, height: 100, color: Colors.black),
               ),
-              // Container(
-              //     padding: const EdgeInsets.only(left: 15, right: 15),
-              //     child: Icon(FeatherIcons.user) //TODO: change icon
-
-              //     ),
             ],
           ),
         ),

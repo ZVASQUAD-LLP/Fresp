@@ -39,7 +39,6 @@ class _SingleProductState extends State<SingleAddress> {
           side: BorderSide(color: Colors.black38),
           borderRadius: BorderRadius.circular(10)),
       shadowColor: Colors.black87,
-      elevation: 5,
       surfaceTintColor: Colors.black,
       child: Container(
         width: double.infinity,
@@ -50,37 +49,10 @@ class _SingleProductState extends State<SingleAddress> {
             itemBuilder: ((context, index) {
               return ListTile(
                 title: Text(
-                    '${addresses[index].apartment}, ${addresses[index].street}'),
+                    '${addresses[index].apartment}, ${addresses[index].street}, ${addresses[index].city}, ${addresses[index].zip}'),
               );
             })),
       ),
     );
-    // return Container(
-    //   padding: const EdgeInsets.symmetric(horizontal: 5),
-    //   child: DecoratedBox(
-    //     decoration: BoxDecoration(
-    //         border: Border.all(color: Colors.black12, width: 1.5),
-    //         borderRadius: BorderRadius.circular(5),
-    //         color: Colors.white),
-    //     child: SizedBox(
-    //       width: 150,
-    //       child: DropdownButton(
-    //         isExpanded: true,
-    //         onChanged: (String? newValue) {
-    //           setState(() {
-    //             address = newValue!;
-    //           });
-    //         },
-    //         value: address,
-    //         icon: const Icon(Icons.arrow_drop_down_rounded),
-    //         items: addresses.map((Address item) {
-    //           return DropdownMenuItem(
-    //               value: item.id,
-    //               child: Text('${item.apartment}, ${item.street}'));
-    //         }).toList(),
-    //       ),
-    //     ),
-    //   ),
-    // );
   }
 }

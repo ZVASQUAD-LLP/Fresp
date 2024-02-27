@@ -110,7 +110,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                                           ),
                                           PriceWidget(price: product?.price),
                                           const SizedBox(
-                                            height: 24,
+                                            height: 15,
                                           ),
                                         ],
                                       ),
