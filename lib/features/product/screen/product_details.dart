@@ -2,7 +2,7 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-
+import 'package:fresp/constants/utils.dart';
 import 'package:fresp/common/widgets/text_widget.dart';
 import 'package:fresp/common/widgets/utils.dart';
 import 'package:fresp/constants/global_variables.dart';
@@ -46,6 +46,7 @@ class _ProductDetailState extends State<ProductDetails> {
 
   void addToCart() {
     productService.addToCart(context: context, product: widget.product);
+    showSnackBar(context, "Success!", "Added to cart", 1);
   }
 
   @override
@@ -55,7 +56,7 @@ class _ProductDetailState extends State<ProductDetails> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(60),
         child: AppBar(
           leading: IconButton(
             onPressed: Navigator.of(context).pop,
@@ -69,14 +70,14 @@ class _ProductDetailState extends State<ProductDetails> {
             children: [
               Container(
                 alignment: Alignment.topLeft,
-                child: Image.asset('assets/images/amazon_in.png',
-                    width: 120, height: 45, color: Colors.black),
+                child: Image.asset('assets/images/logo_transperant.png',
+                    width: 150, height: 100, color: Colors.black),
               ),
-              Container(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: Icon(FeatherIcons.user) //TODO: change icon
+              // Container(
+              //     padding: const EdgeInsets.only(left: 15, right: 15),
+              //     child: Icon(FeatherIcons.user) //TODO: change icon
 
-                  ),
+              //     ),
             ],
           ),
         ),
@@ -86,117 +87,124 @@ class _ProductDetailState extends State<ProductDetails> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.only(left: 15.0, top: 10.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   TextWidget(
-                      text: widget.product.brand, color: color, textSize: 15),
+                      text: widget.product.brand,
+                      color: color,
+                      textSize: 18,
+                      isTitle: true),
                 ],
               ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 20,
-                horizontal: 10,
+                horizontal: 15,
               ),
               child: Text(
                 widget.product.name,
                 style:
-                    const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
-                height: size.height * 0.40,
-                child: Swiper(
-                  itemBuilder: (BuildContext context, int index) {
-                    return Image.network(widget.product.images[index],
-                        height: 300, width: 500, fit: BoxFit.fill);
-                  },
-                  autoplay: false,
-                  itemCount: widget.product.images.length,
-                  // ignore: prefer_const_constructors
-                  pagination: SwiperPagination(
-                      alignment: Alignment.bottomCenter,
-                      // ignore: prefer_const_constructors
-                      builder: DotSwiperPaginationBuilder(
-                          color: Colors.white,
-                          activeColor: Color.fromARGB(255, 233, 58, 5))),
-                )),
-            Container(
-              color: Color.fromARGB(255, 110, 109, 109),
-              height: 2,
-            ),
             Padding(
-              padding: const EdgeInsets.all(8),
+                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                child: SizedBox(
+                    height: size.height * 0.350,
+                    child: Swiper(
+                      itemBuilder: (BuildContext context, int index) {
+                        return Image.network(widget.product.images[index],
+                            height: 300, width: 500, fit: BoxFit.fill);
+                      },
+                      autoplay: false,
+                      itemCount: widget.product.images.length,
+                      // ignore: prefer_const_constructors
+                      pagination: SwiperPagination(
+                          alignment: Alignment.bottomCenter,
+                          // ignore: prefer_const_constructors
+                          builder: DotSwiperPaginationBuilder(
+                              color: Colors.white,
+                              activeColor: GlobalVariables.secondaryColorRed)),
+                    ))),
+            // Container(
+            //   color: Color.fromARGB(255, 110, 109, 109),
+            //   height: 2,
+            // ),
+            Padding(
+              padding: const EdgeInsets.all(10),
               child: RichText(
                 text: TextSpan(
-                    text: ' Price: ',
+                    text: ' Price: \n\n ',
                     style: const TextStyle(
-                      fontSize: 18,
-                      color: Color.fromARGB(31, 10, 10, 10),
+                      fontSize: 15,
+                      color: Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                     children: [
                       TextSpan(
-                        text: (widget.product.price).toString(),
+                        text: '\₹ ' + (widget.product.price).toString(),
                         style: const TextStyle(
-                          fontSize: 22,
-                          color: Colors.red,
+                          fontSize: 20,
+                          color: GlobalVariables.secondaryColorRed,
                           fontWeight: FontWeight.w500,
                         ),
                       )
                     ]),
               ),
             ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
+            ListTile(
+              title: Text(
                 widget.product.description,
                 style: TextStyle(fontSize: 15),
               ),
             ),
-            Container(
-              color: Color.fromARGB(255, 110, 109, 109),
-              height: 2,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(
-                child: Material(
-                    color: const Color.fromARGB(255, 226, 138, 6),
-                    borderRadius: BorderRadius.circular(5),
-                    child: InkWell(
-                        borderRadius: BorderRadius.circular(12),
-                        onTap: () {},
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 90, vertical: 10),
-                          child: TextWidget(
-                            text: 'Buy Now',
-                            textSize: 25,
-                            color: Colors.black,
-                          ),
-                        ))),
-              ),
-            ),
+
+            // Container(
+            //   padding: EdgeInsets.all(20),
+            //   color: Color.fromARGB(255, 110, 109, 109),
+            //   height: 1,
+            // ),
+            // Padding(
+            //   padding: const EdgeInsets.all(8.0),
+            //   child: Center(
+            //     child: Material(
+            //         color: GlobalVariables,
+            //         borderRadius: BorderRadius.circular(5),
+            //         child: InkWell(
+            //             borderRadius: BorderRadius.circular(12),
+            //             onTap: () {},
+            //             child: Padding(
+            //               padding: const EdgeInsets.symmetric(
+            //                   horizontal: 90, vertical: 10),
+            //               child: TextWidget(
+            //                 text: 'Buy Now',
+            //                 textSize: 25,
+            //                 color: Colors.black,
+            //               ),
+            //             ))),
+            //   ),
+            // ),
             const SizedBox(
-              height: 10,
+              height: 30,
             ),
             Center(
               child: Material(
-                  color: const Color.fromARGB(255, 54, 177, 5),
+                  color: GlobalVariables.selectedNavBarColor,
                   borderRadius: BorderRadius.circular(5),
                   child: InkWell(
                       borderRadius: BorderRadius.circular(12),
                       onTap: addToCart,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 90, vertical: 10),
+                            horizontal: 50, vertical: 15),
                         child: TextWidget(
                           text: 'Add to Cart',
-                          textSize: 20,
-                          color: Colors.white,
+                          textSize: 18,
+                          isTitle: true,
+                          color: Colors.black,
                         ),
                       ))),
             ),

@@ -69,8 +69,8 @@ class _PostsScreenState extends State<PostsScreen> {
                             child: Text(
                               'See all',
                               style: TextStyle(
-                                fontSize: 18,
-                                color: GlobalVariables.selectedNavBarColor,
+                                fontSize: 15,
+                                color: GlobalVariables.secondaryColor,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

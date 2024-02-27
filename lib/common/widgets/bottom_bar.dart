@@ -1,17 +1,14 @@
 import 'package:badges/badges.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:fresp/constants/global_variables.dart';
 import 'package:fresp/features/cart/screen/cart_screen.dart';
 import 'package:fresp/features/categories/screen/categories_screen.dart';
+import 'package:fresp/features/searched%20screen/screens/searched_screen.dart';
 import 'package:fresp/features/user/screen/user_screen.dart';
-import 'package:fresp/models/user.dart';
+import 'package:fresp/models/category.dart';
 import 'package:fresp/providers/user_detail_provider.dart';
 import 'package:provider/provider.dart';
-
-import '../../providers/user_provider.dart';
 import '../../features/homescreen/screens/homescreen.dart';
 
 class BottomBarScreen extends StatefulWidget {
@@ -29,6 +26,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     const CategoriesScreen(),
     const CartScreen(),
     const UserScreen(),
+    // const SearchedScreen(),
   ];
   void _selectedPage(int index) {
     setState(() {
@@ -36,15 +34,15 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
     });
   }
 
-  double bottomBarBorderWidth = 5;
-  double bottomBarWidth = 42;
+  double bottomBarBorderWidth = 3.0;
+  double bottomBarWidth = 40.0;
   @override
   Widget build(BuildContext context) {
     final userCartLen = context.watch<UserDetailProvider>().user.cart.length;
     return Scaffold(
       body: _pages[_selectedindex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: GlobalVariables.backgroundColor,
         type: BottomNavigationBarType.fixed,
         showSelectedLabels: true,
         showUnselectedLabels: true,
@@ -52,7 +50,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         // unselectedItemColor: GlobalVariables.unselectedNavBarColor,
         currentIndex: _selectedindex,
         onTap: _selectedPage,
-        iconSize: 28,
+        iconSize: 20,
         items:
             // const <BottomNavigationBarItem>
             [
@@ -63,10 +61,11 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 border: Border(
                     top: BorderSide(
                         color: _selectedindex == 0
-                            ? GlobalVariables.selectedNavBarColor
+                            ? GlobalVariables.darkNavBarColor
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
+              padding: const EdgeInsets.only(top: 5.0),
               child: const Icon(FeatherIcons.home),
             ),
             label: "Home",
@@ -78,10 +77,11 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 border: Border(
                     top: BorderSide(
                         color: _selectedindex == 1
-                            ? GlobalVariables.selectedNavBarColor
+                            ? GlobalVariables.darkNavBarColor
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
+              padding: const EdgeInsets.only(top: 5.0),
               child: const Icon(FeatherIcons.search),
             ),
             label: "Category",
@@ -93,10 +93,11 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 border: Border(
                     top: BorderSide(
                         color: _selectedindex == 2
-                            ? GlobalVariables.selectedNavBarColor
+                            ? GlobalVariables.darkNavBarColor
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
+              padding: const EdgeInsets.only(top: 5.0),
               child: Badge(
                   elevation: 0,
                   badgeContent: Text(userCartLen.toString()),
@@ -112,10 +113,11 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 border: Border(
                     top: BorderSide(
                         color: _selectedindex == 3
-                            ? GlobalVariables.selectedNavBarColor
+                            ? GlobalVariables.darkNavBarColor
                             : GlobalVariables.backgroundColor,
                         width: bottomBarBorderWidth)),
               ),
+              padding: const EdgeInsets.only(top: 5.0),
               child: const Icon(FeatherIcons.user),
             ),
             label: "User",

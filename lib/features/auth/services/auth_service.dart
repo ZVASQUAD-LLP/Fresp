@@ -43,11 +43,11 @@ class AuthService {
           response: res,
           context: context,
           onSuccess: () {
-            showSnackBar(
-                context, 'Account created! login with the same credentials');
+            showSnackBar(context, 'Success!',
+                'Account created! login with the same credentials', 1);
           });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
   }
 
@@ -67,7 +67,7 @@ class AuthService {
         context: context,
         onSuccess: () async {
           SharedPreferences prefs = await SharedPreferences.getInstance();
-          print(res.body);
+          //print(res.body);
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
 
@@ -76,7 +76,7 @@ class AuthService {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
   }
 
@@ -119,7 +119,7 @@ class AuthService {
         userProvider.setUser(userLoginRes.body);
       }
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
   }
 
@@ -131,9 +131,9 @@ class AuthService {
       Navigator.pushNamedAndRemoveUntil(
           context, AuthScreen.routeName, (route) => false);
       ;
-      showSnackBar(context, "logged out succesfully");
+      showSnackBar(context, "Success!", "logged out succesfully", 1);
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
   }
 }

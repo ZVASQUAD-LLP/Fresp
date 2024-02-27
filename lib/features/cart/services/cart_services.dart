@@ -37,7 +37,7 @@ class CartServices {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
   }
 }

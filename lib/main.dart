@@ -50,6 +50,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Fresp',
         theme: ThemeData(
           scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+          fontFamily: 'AmazonEmber',
           colorScheme: const ColorScheme.light(
             primary: GlobalVariables.secondaryColor,
           ),

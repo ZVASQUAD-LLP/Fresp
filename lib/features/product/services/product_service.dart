@@ -39,7 +39,7 @@ class ProductService {
         },
       );
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
   }
 
@@ -67,7 +67,7 @@ class ProductService {
             }
           });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
     return productList;
   }
@@ -101,7 +101,7 @@ class ProductService {
             }
           });
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
     return product;
   }

@@ -15,47 +15,28 @@ class _OrdersState extends State<Orders> {
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<UserDetailProvider>(context).user;
-    return Column(
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: const EdgeInsets.only(left: 15),
-              child: const Text(
-                'Your Orders',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.only(right: 15),
-              child: Text(
-                'See all',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: GlobalVariables.selectedNavBarColor,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
-        ),
-        Container(
-          height: 170,
-          padding: const EdgeInsets.only(left: 10, top: 20, right: 0),
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: user.orderHistory.length,
-              itemBuilder: ((context, index) {
-                return SingleProduct(
-                    orderId: user.orderHistory[index].toString());
-              })),
-        ),
-      ],
+    return Card(
+      margin: EdgeInsets.all(15),
+      shape: RoundedRectangleBorder(
+          side: BorderSide(color: Colors.black38),
+          borderRadius: BorderRadius.circular(10)),
+      shadowColor: Colors.black87,
+      elevation: 5,
+      surfaceTintColor: Colors.black,
+      child: Container(
+        width: double.infinity,
+        padding: const EdgeInsets.all(10),
+        child: ListView.builder(
+            scrollDirection: Axis.vertical,
+            itemCount: user.orderHistory.length,
+            itemBuilder: ((context, index) {
+              return ListTile(
+                title: Text('${user.orderHistory[index].toString()}'),
+              );
+              // return SingleProduct(
+              //     orderId: user.orderHistory[index].toString());
+            })),
+      ),
     );
   }
 }

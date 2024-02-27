@@ -15,19 +15,21 @@ class BelowAppBar extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
-      padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
       child: RichText(
           text: TextSpan(
               text: 'Hello, ',
-              style: const TextStyle(
-                fontSize: 22,
+              style: TextStyle(
+                fontFamily: 'AmazonEmber',
+                fontSize: 20,
                 color: Colors.black,
               ),
               children: [
             TextSpan(
               text: user.name,
-              style: const TextStyle(
-                  fontSize: 22,
+              style: TextStyle(
+                  fontFamily: 'AmazonEmber',
+                  fontSize: 20,
                   color: Colors.black,
                   fontWeight: FontWeight.w600),
             )

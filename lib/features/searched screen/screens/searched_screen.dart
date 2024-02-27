@@ -43,7 +43,7 @@ class _SearchedScreenState extends State<SearchedScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(60),
         child: AppBar(
           leading: IconButton(
             onPressed: Navigator.of(context).pop,
@@ -57,14 +57,14 @@ class _SearchedScreenState extends State<SearchedScreen> {
             children: [
               Container(
                 alignment: Alignment.topLeft,
-                child: Image.asset('assets/images/amazon_in.png',
-                    width: 120, height: 45, color: Colors.black),
+                child: Image.asset('assets/images/logo_transperant.png',
+                    width: 150, height: 100, color: Colors.black),
               ),
-              Container(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: Icon(FeatherIcons.user) //TODO: change icon
+              // Container(
+              //     padding: const EdgeInsets.only(left: 15, right: 15),
+              //     child: Icon(FeatherIcons.user) //TODO: change icon
 
-                  ),
+              //     ),
             ],
           ),
         ),

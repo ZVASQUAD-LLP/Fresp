@@ -1,13 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:fresp/common/widgets/text_widget.dart';
 import 'package:fresp/common/widgets/utils.dart';
-import 'package:fresp/features/address/screen/address_screen.dart';
 import 'package:fresp/features/cart/screen/empty_screen.dart';
 import 'package:fresp/features/cart/widgets/cart_subtotal.dart';
 import 'package:fresp/features/cart/widgets/cart_widget.dart';
-import 'package:fresp/providers/user_detail_provider.dart';
 import 'package:fresp/providers/user_detail_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +28,7 @@ class _CartScreenState extends State<CartScreen> {
     final user = Provider.of<UserDetailProvider>(context).user;
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(60),
         child: AppBar(
           flexibleSpace: Container(
             decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
@@ -43,18 +38,16 @@ class _CartScreenState extends State<CartScreen> {
             children: [
               Container(
                 alignment: Alignment.topLeft,
-                child: Image.asset('assets/images/amazon_in.png',
-                    width: 120, height: 45, color: Colors.black),
+                child: Image.asset('assets/images/logo_transperant.png',
+                    width: 150, height: 100, color: Colors.black),
               ),
-              Container(
-                  padding: const EdgeInsets.only(left: 15, right: 15),
-                  child: Icon(FeatherIcons.user)),
             ],
           ),
         ),
       ),
       body: SingleChildScrollView(
         child: Container(
+          padding: EdgeInsets.all(10.0),
           height: 450,
           child: Column(
             children: [
@@ -73,42 +66,4 @@ class _CartScreenState extends State<CartScreen> {
       ),
     );
   }
-
-  // Widget _checkout({
-  //   required BuildContext ctx,
-  // }) {
-  //   return SizedBox(
-  //       width: double.infinity,
-  //       height: 50,
-  //       child: Padding(
-  //         padding: const EdgeInsets.symmetric(horizontal: 12),
-  //         child: Row(
-  //           children: [
-  //             FittedBox(
-  //               child: TextWidget(
-  //                 text: 'Total Rs.500',
-  //                 color: Colors.black,
-  //                 textSize: 20,
-  //                 isTitle: true,
-  //               ),
-  //             ),
-  //             const Spacer(),
-  //             Material(
-  //                 color: Color.fromARGB(255, 7, 100, 11),
-  //                 borderRadius: BorderRadius.circular(10),
-  //                 child: InkWell(
-  //                     borderRadius: BorderRadius.circular(12),
-  //                     onTap: navigateToAddress,
-  //                     child: Padding(
-  //                       padding: const EdgeInsets.all(8.0),
-  //                       child: TextWidget(
-  //                         text: 'Order Now',
-  //                         textSize: 20,
-  //                         color: Colors.white,
-  //                       ),
-  //                     ))),
-  //           ],
-  //         ),
-  //       ));
-  // }
 }

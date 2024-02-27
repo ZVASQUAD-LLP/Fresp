@@ -6,6 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 import 'package:fresp/common/widgets/text_widget.dart';
+import 'package:fresp/constants/global_variables.dart';
 import 'package:fresp/features/product/screen/product_details.dart';
 import 'package:fresp/features/product/services/product_service.dart';
 import 'package:fresp/models/product.dart';
@@ -30,7 +31,7 @@ class SearchedProduct extends StatelessWidget {
               arguments: product);
         },
         child: Container(
-          height: 120,
+          height: 90,
           child: Row(
             children: [
               Expanded(
@@ -39,7 +40,7 @@ class SearchedProduct extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).canvasColor.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -47,30 +48,28 @@ class SearchedProduct extends StatelessWidget {
                       children: [
                         Container(
                           height: 90,
-                          width: 90,
+                          width: 70,
                           decoration: BoxDecoration(
                             color: Theme.of(context).cardColor,
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(5),
                           ),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(5),
                             child: Image.network(
                               product.images[0],
-                              width: 200,
-                              height: 150,
                               fit: BoxFit.fill,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
+                          padding: const EdgeInsets.only(left: 10.0, top: 5.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               TextWidget(
                                 text: product.name,
                                 color: Colors.black,
-                                textSize: 20,
+                                textSize: 17,
                                 isTitle: true,
                               ),
                               const SizedBox(
@@ -89,15 +88,15 @@ class SearchedProduct extends StatelessWidget {
                                   onTap: addToCart,
                                   child: const Icon(
                                     (FeatherIcons.shoppingBag),
-                                    color: Colors.red,
-                                    size: 20,
+                                    color: Colors.black,
+                                    size: 25,
                                   )),
                               const SizedBox(
                                 height: 5,
                               ),
                               TextWidget(
-                                text: product.price.toString(),
-                                color: Colors.black,
+                                text: '\₹ ' + product.price.toString(),
+                                color: GlobalVariables.secondaryColorRed,
                                 textSize: 17,
                                 maxLines: 1,
                               )

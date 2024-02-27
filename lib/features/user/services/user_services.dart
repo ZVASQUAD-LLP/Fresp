@@ -29,7 +29,7 @@ class UserServices {
             order = Order.fromJson(res.body);
           }));
     } catch (e) {
-      showSnackBar(context, e.toString());
+      showSnackBar(context, "Error!", e.toString(), 0);
     }
     return (order);
   }

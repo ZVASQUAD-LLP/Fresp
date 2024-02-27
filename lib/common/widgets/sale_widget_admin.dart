@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-
+import 'package:fresp/constants/utils.dart';
 import 'package:fresp/common/widgets/utils.dart';
 import 'package:fresp/features/cart/screen/cart_screen.dart';
 import 'package:fresp/features/product/services/product_service.dart';
@@ -27,6 +27,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
   final ProductService productService = ProductService();
   void addToCart() {
     productService.addToCart(context: context, product: widget.product);
+    showSnackBar(context, "Success!", "Added to cart", 1);
   }
 
   Product? product;
@@ -49,7 +50,7 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
           navigateToProduct(product?.id);
         },
         child: Container(
-            margin: const EdgeInsets.all(5),
+            padding: const EdgeInsets.only(left: 7, top: 7, right: 7),
             child: Material(
               borderRadius: BorderRadius.circular(5),
               color: Color.fromARGB(255, 245, 244, 244),
@@ -59,12 +60,14 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                     navigateToProduct(product?.id);
                   },
                   child: Padding(
-                      padding: const EdgeInsets.all(7.0),
+                      padding: const EdgeInsets.only(bottom: 0.0),
                       child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(5),
+                                  topRight: Radius.circular(5)),
                               child: Container(
                                 decoration: const BoxDecoration(
                                   boxShadow: [
@@ -77,17 +80,17 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                                 ),
                                 child: Image.network(
                                   product!.images[0],
-                                  width: size.width * 0.30,
-                                  height: size.width * 0.18,
+                                  width: size.shortestSide * 0.34,
+                                  height: size.height * 0.088,
                                   fit: BoxFit.fill,
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 5.0),
+                              padding: const EdgeInsets.only(
+                                  left: 5.0, top: 7.0, right: 5.0),
                               child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   children: [
                                     Container(
                                       color: Colors.transparent,
@@ -97,31 +100,24 @@ class _SaleWidgetAdminState extends State<SaleWidgetAdmin> {
                                             CrossAxisAlignment.start,
                                         children: [
                                           TextWidget(
-                                            text: product?.name,
+                                            text: "${product?.name}\n",
                                             color: color,
-                                            textSize: 15,
+                                            textSize: 16,
                                             isTitle: true,
                                           ),
                                           const SizedBox(
-                                            height: 2,
+                                            height: 5,
                                           ),
                                           PriceWidget(price: product?.price),
-                                          const SizedBox(height: 0.1),
-                                          // TextWidget(
-                                          //     text: '1kg',
-                                          //     color: color,
-                                          //     textSize: 14,
-                                          //     isTitle: true),
-                                          const SizedBox(height: 0.1),
+                                          const SizedBox(
+                                            height: 15,
+                                          ),
                                         ],
                                       ),
                                     ),
-                                    Container(
-                                      child: InkWell(
-                                          onTap: addToCart,
-                                          child:
-                                              Icon(FeatherIcons.shoppingBag)),
-                                    )
+                                    InkWell(
+                                        onTap: addToCart,
+                                        child: Icon(FeatherIcons.shoppingBag))
                                   ]),
                             )
                           ]))),

@@ -49,6 +49,13 @@ class _CartWidgetState extends State<CartWidget> {
       );
     }
 
+    void deleteProduct(Product product) {
+      cartServices.removeFromCart(
+        context: context,
+        product: product,
+      );
+    }
+
     return GestureDetector(
         onTap: () {
           Navigator.pushNamed(context, ProductDetails.routename);
@@ -59,7 +66,7 @@ class _CartWidgetState extends State<CartWidget> {
             children: [
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: Container(
                     decoration: BoxDecoration(
                       color: Theme.of(context).canvasColor.withOpacity(0.2),
@@ -70,35 +77,37 @@ class _CartWidgetState extends State<CartWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Container(
-                          height: 90,
-                          width: 90,
+                          height: 80,
+                          width: 70,
                           decoration: BoxDecoration(
                             color: Theme.of(context).cardColor,
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius: BorderRadius.circular(10),
                           ),
                           child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
+                            borderRadius: BorderRadius.circular(8),
                             child: Image.network(
                               product.images[0],
-                              width: 200,
+                              width: 150,
                               height: 150,
                               fit: BoxFit.fill,
                             ),
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsets.all(4.0),
+                          padding: const EdgeInsets.only(
+                              top: 4.0, bottom: 4.0, left: 10.0, right: 4.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               TextWidget(
                                 text: product.name,
                                 color: Colors.black,
-                                textSize: 20,
+                                textSize: 17,
                                 isTitle: true,
                               ),
                               const SizedBox(
-                                height: 16,
+                                height: 18,
                               ),
                               SizedBox(
                                   width: 150,
@@ -112,7 +121,7 @@ class _CartWidgetState extends State<CartWidget> {
                                           alignment: Alignment.center,
                                           child: const Icon(
                                             FeatherIcons.minus,
-                                            size: 18,
+                                            size: 20,
                                           ),
                                         ),
                                       ),
@@ -142,7 +151,7 @@ class _CartWidgetState extends State<CartWidget> {
                                           alignment: Alignment.center,
                                           child: const Icon(
                                             FeatherIcons.plus,
-                                            size: 18,
+                                            size: 20,
                                           ),
                                         ),
                                       ),
@@ -153,22 +162,23 @@ class _CartWidgetState extends State<CartWidget> {
                         ),
                         const Spacer(),
                         Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
+                          padding: const EdgeInsets.symmetric(horizontal: 0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              InkWell(
-                                  onTap: () {},
-                                  child: const Icon(
-                                    CupertinoIcons.cart_badge_minus,
-                                    color: Colors.red,
-                                    size: 20,
-                                  )),
+                              // InkWell(
+                              //     //TODO
+                              //     onTap: () => deleteProduct(product),
+                              //     child: const Icon(
+                              //       CupertinoIcons.cart_badge_minus,
+                              //       color: Colors.red,
+                              //       size: 20,
+                              //     )),
                               const SizedBox(
                                 height: 5,
                               ),
                               TextWidget(
-                                text: product.price.toString(),
+                                text: '\₹ ' + product.price.toString(),
                                 color: Colors.black,
                                 textSize: 17,
                                 maxLines: 1,
